@@ -1,0 +1,57 @@
+<div ng-init="init()">
+  <div class="col-md-8">
+    <div class="ibox search-form">
+      <div class="ibox-title" ng-init="showSearch = false">
+        <h5>대학 추가 요청</h5>
+      </div>
+      <div class="ibox-content table-responsive">
+       <table class="table table-user table-condensed">
+         <tbody>
+           <tr ng-repeat="university in universityList">
+             <td>
+               {{university.code}}
+             </td>
+             <td>
+               {{university.value}}
+             </td>
+             <td>
+               <button ng-click="approveUniversity(university)" class="btn btn-primary btn-sm">추가</button>&nbsp;
+               <button ng-click="denyUniversity(university)" class="btn btn-warning btn-sm">삭제</button>&nbsp;
+               <button ng-click="getUnivUser(university)" class="btn btn-default btn-sm">해당유저</button>
+             </td>
+           </tr>
+         </tbody>
+       </table>
+     </div>
+   </div>
+ </div>
+
+ <div class="col-md-4">
+   <div class="ibox">
+       <div class="ibox-title">
+         <h5>대학 유저 리스트</h5>
+       </div>
+       <div class="ibox-content">
+         <table class="table table-userUniv table-condensed">
+           <tbody>
+             <tr ng-repeat="user in userList">
+               <td>
+                 {{user.id}}
+               </td>
+               <td>
+                   <md-select ng-model="user.universityCode" placeholder="대학">
+                     <md-option ng-repeat="item in basicInfo.universityCode" value="{{item.code}}">
+                       {{item.value}}
+                     </md-option>
+                   </md-select>
+               </td>
+               <td>
+                 <button ng-click="modifyUserUniversity(user)" class="btn btn-primary btn-sm">변경</button>
+               </td>
+             </tr>
+           </tbody>
+         </table>
+       </div>
+   </div>
+</div>
+</div>

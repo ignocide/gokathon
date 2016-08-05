@@ -1,0 +1,178 @@
+<div ng-init = "init()" class="row">
+  <div class="col-md-12">
+    <md-switch ng-model="showDone" class="md-primary">{{showDone ? "신고완료" : "신고"}}</md-switch>
+  </div>
+  <div class="col-md-8">
+
+    <!--  신고해야됨 -->
+    <div class="ibox float-e-margins" ng-show="!showDone">
+      <div class="ibox-title">
+        <h5>report list</h5>
+        <div class="ibox-tools">
+          <span class="label label-warning-light pull-right" ng-bind="reportCount"></span>
+        </div>
+      </div>
+      <div class="ibox-content">
+          <div>
+              <div class="feed-activity-list">
+                  <div class="feed-element" ng-repeat="report in reportList">
+                      <a class="pull-left">
+                          <img alt="image" class="img-circle" ng-src="{{'http://127.0.0.1/profile/photo/'+report.id}}" ng-click="viewPhoto('http://127.0.0.1/profile/photo/'+report.id)">
+                      </a>
+                      <div class="media-body">
+                          <small class="pull-right">
+                            {{report.list.length}}건
+                            <a class="btn btn-xs btn-white" ng-click="openReportForm(report)"><i class="fa fa-ban"></i> </a>
+                            <a class="btn btn-xs btn-white" ng-click="setDoneReport(report);"><i class="fa fa-check"></i> </a>
+                          </small>
+
+                          <strong ng-bind="report.id" ng-click="getUserInfo(report.id)"></strong> &nbsp;&nbsp;<strong ng-bind="report.nickName"></strong>
+                          <br>
+
+                          <div class="subList" ng-repeat="item in report.list">
+                              <a ng-bind="item.idx"></a>) &nbsp;<a ng-bind="item.id"></a>&nbsp;<a ng-bind="item.nickName"></a>
+                              <small class="text-muted pull-right">{{item.reqTime | date : "yyyy-MM-dd h:mma"}}
+                                <a class="btn btn-xs btn-white" ng-click="setRoom(item)"><i class="fa fa-comment"></i> </a>
+                              </small>
+                            <div class="well">
+                                {{item.content}}
+                            </div>
+                          </div>
+                          <!-- <div class="pull-right">
+                              <a class="btn btn-xs btn-white"><i class="fa fa-comment"></i> </a>
+                          </div> -->
+                          <!-- <div class="actions">
+                              <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
+                              <a class="btn btn-xs btn-white"><i class="fa fa-heart"></i> Love</a>
+                          </div> -->
+                      </div>
+                  </div>
+
+              <button class="btn btn-primary btn-block m-t" ng-click="getReportList()"><i class="fa fa-arrow-down"></i> Show More</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--  신고완료 -->
+    <div class="ibox float-e-margins" ng-show="showDone">
+      <div class="ibox-title">
+        <h5>done report list</h5>
+        <div class="ibox-tools">
+          <span class="label label-warning-light pull-right" ng-bind="doneReportCount"></span>
+        </div>
+      </div>
+      <div class="ibox-content">
+          <div>
+              <div class="feed-activity-list">
+                  <div class="feed-element" ng-repeat="report in doneReportList">
+                      <a class="pull-left">
+                          <img alt="image" class="img-circle" ng-src="{{'http://127.0.0.1/profile/photo/'+report.id}}" ng-click="viewPhoto('http://127.0.0.1/profile/photo/'+report.id)">
+                      </a>
+                      <div class="media-body">
+                          <small class="pull-right">
+                            {{report.list.length}}건
+                            <a class="btn btn-xs btn-white" ng-click="setReqReport(report);"><i class="fa fa-check"></i> </a>
+                          </small>
+
+                          <strong ng-bind="report.id" ng-click="getUserInfo(report.id)"></strong> &nbsp;&nbsp;<strong ng-bind="report.nickName"></strong>
+                          <br>
+
+                          <div class="subList" ng-repeat="item in report.list">
+                              <a ng-bind="item.idx"></a>) &nbsp;<a ng-bind="item.id"></a>&nbsp;<a ng-bind="item.nickName"></a>
+                              <small class="text-muted pull-right">{{item.reqTime | date : "yyyy-MM-dd h:mma"}}
+                                <a class="btn btn-xs btn-white" ng-click="setRoom(item)"><i class="fa fa-comment"></i> </a>
+                              </small>
+                            <div class="well">
+                                {{item.content}}
+                            </div>
+                          </div>
+                          <!-- <div class="pull-right">
+                              <a class="btn btn-xs btn-white"><i class="fa fa-comment"></i> </a>
+                          </div> -->
+                          <!-- <div class="actions">
+                              <a class="btn btn-xs btn-white"><i class="fa fa-thumbs-up"></i> Like </a>
+                              <a class="btn btn-xs btn-white"><i class="fa fa-heart"></i> Love</a>
+                          </div> -->
+                      </div>
+                  </div>
+
+              <button class="btn btn-primary btn-block m-t" ng-click="getDoneReportList()"><i class="fa fa-arrow-down"></i> Show More</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <div class="col-md-4">
+    <div class="chat-panel panel panel-default" ng-controller = "chatCtrl">
+        <div class="panel-heading">
+            <i class="fa fa-comments fa-fw"></i>
+            Chat
+        </div>
+        <div class="panel-body">
+              <ul class="chat">
+                  <li class="left clearfix" ng-repeat="message in chat.messages">
+                      <!-- <span class="chat-img pull-left"> -->
+                      <span class="chat-img pull-left">
+                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                      </span>
+                      <div class="chat-body clearfix">
+                          <div class="header">
+                              <strong class="primary-font" ng-click="getUserInfo(message.id)" ng-class="getClassByUserType(message)">{{message.id + " " +message.nickname}}</strong>
+                              <small class="pull-right text-muted">
+                                  <i class="fa fa-clock-o fa-fw"></i> {{message.timestamp | date : fullDate}}
+                              </small>
+                          </div>
+                          <p class="chat-meesage">
+                              {{message.message}}
+                          </p>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+    </div>
+  </div>
+
+  <!-- <div class="report-overlay" ng-controller="photoCtrl" ng-show="svc.open"></div> -->
+  <div class="report-modal" ng-controller="photoCtrl" ng-show="report.formOpen">
+    <!-- <img ng-src="{{svc.photo}}" class="photo-body"/> -->
+    <div class="report-form">
+      <div class="report-header">
+        <p>신고하기
+          <span class="pull-right text-muted">
+            <i class="fa fa-times" aria-hidden="true" ng-click="closeReportForm()" role="button" tabindex="0"></i>
+          </span>
+        </p>
+      </div>
+      <div class="report-body">
+        <md-input-container>
+          <label>id</label>
+          <input ng-model="report.id" type="text">
+        </md-input-container>
+
+
+        <md-input-container class="md-block">
+          <label>message</label>
+          <textarea ng-model="report.message" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+        </md-input-container>
+
+
+      </div>
+      <div class="report-foot">
+        <div class="pull-right">
+          <md-button class="md-raised md-primary" ng-click="doReport()">처리하기</md-button>
+          <md-button class="md-raised" ng-click="closeReportForm()">취소</md-button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

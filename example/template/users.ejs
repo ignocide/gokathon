@@ -1,0 +1,179 @@
+<div ng-init="init()">
+  <div class="ibox search-form">
+    <div class="ibox-title" ng-init="showSearch = false">
+      <h5>search</h5>
+      <div class="ibox-tools">
+        <a class="collapse-link" ng-click="showSearch = true" ng-show ="!showSearch">
+          <i class="fa fa-chevron-up"></i>
+        </a>
+        <a class="collapse-link" ng-click="showSearch = false" ng-show ="showSearch">
+            <i class="fa fa-chevron-down"></i>
+        </a>
+      </div>
+    </div>
+    <div class="ibox-content" ng-show="showSearch">
+
+      <div class="row search-form-row">
+        <div class="col-lg-3">
+          <md-input-container class="md-block" >
+            <label>unique id</label>
+           <input ng-model="searchInfo.id">
+          </md-input-container>
+        </div>
+        <div class="col-lg-3">
+          <md-input-container class="md-block" >
+            <label>nickName</label>
+            <input ng-model="searchInfo.nickName">
+          </md-input-container>
+        </div>
+        <div class="col-lg-3">
+          <md-input-container class="md-block">
+            <label>성별</label>
+            <md-select ng-model="searchInfo.gender" placeholder="성별">
+              <md-option ng-value="undefined">
+                -
+              </md-option>
+              <md-option ng-repeat="item in basicInfo.genderInfo" value="{{item.code}}">
+                {{item.value}}
+              </md-option>
+            </md-select>
+
+          </md-input-container>
+        </div>
+        <div class="col-lg-3">
+          <md-input-container class="md-block">
+            <label>지역</label>
+            <md-select ng-model="searchInfo.locationCode" placeholder="지역">
+              <md-option ng-value="undefined">
+                -
+              </md-option>
+
+              <md-option ng-repeat="item in basicInfo.locationCode" value="{{item.code}}">
+                {{item.value}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+    </div>
+     <div class="row search-form-row">
+       <div class="col-lg-3">
+         <md-input-container class="md-block">
+           <label>대학</label>
+           <md-select ng-model="searchInfo.universityCode" placeholder="대학">
+             <md-option ng-value="undefined">
+               -
+             </md-option>
+             <md-option ng-repeat="item in basicInfo.universityCode" value="{{item.code}}">
+               {{item.value}}
+             </md-option>
+           </md-select>
+         </md-input-container>
+       </div>
+
+       <div class="col-lg-3">
+         <md-input-container class="md-block">
+           <label>전공</label>
+           <md-select ng-model="searchInfo.majorCode" placeholder="전공">
+             <md-option ng-value="undefined">
+               -
+             </md-option>
+             <md-option ng-repeat="item in basicInfo.majorCode" value="{{item.code}}">
+               {{item.value}}
+             </md-option>
+           </md-select>
+         </md-input-container>
+       </div>
+
+       <div class="col-lg-3">
+         <md-input-container class="md-block">
+           <label>학번</label>
+           <input ng-model="searchInfo.enterYear">
+         </md-input-container>
+       </div>
+
+       <div class="col-lg-3">
+         <md-button ng-click="searchUser()" class="md-primary md-raised form-control ">검색</md-button>
+       </div>
+
+     </div>
+   </div>
+ </div>
+
+
+
+ <div class="ibox user-list">
+   <div class="ibox-title">
+     <h5>유저 리스트</h5>
+     <div class="ibox-tools">
+       <!-- <span class="label label-warning-light pull-right" ng-bind="reportCount"></span> -->
+       <uib-pagination
+          boundary-links="true"
+          total-items="count"
+          ng-model="page"
+          ng-change="toPage()"
+          num-pages
+          class="pagination-sm"
+          previous-text="&lsaquo;"
+          next-text="&rsaquo;"
+          first-text="&laquo;"
+          last-text="&raquo;"
+          items-per-page = "20" >
+       </uib-pagination>
+     </div>
+   </div>
+   <div class="ibox-content table-responsive">
+     <table class="table table-user table-condensed">
+       <tbody>
+         <tr ng-repeat-start="user in userList"  ng-class="{'even-row' : $even}">
+           <td rowspan="2" class="profile">
+             <!-- <span class="label label-info">active</span> -->
+             <div class="profile-wrapper">
+               <img ng-click="viewPhoto(user.photos)" ng-src="{{user.photo}}" height="100%" width="auto">
+             </div>
+           </td>
+
+           <td ng-click="getUserInfo(user.id)">
+             {{user.id}}
+           </td>
+           <td>
+             {{user.nickName}}
+           </td>
+           <td class="table-small-font">
+             {{user.birth | date : 'yyyy MM d'}}({{user.age}})
+           </td>
+           <td>
+             {{user.university}}
+           </td>
+           <td>
+             {{user.major}}
+           </td>
+           <td>
+             {{user.location}}
+           </td>
+         </tr>
+         <tr ng-repeat-end class="under-row" ng-class="{'even-row' : $even}">
+           <td>
+             {{user.height}}
+           </td>
+           <td>
+             {{user.drink}}
+           </td>
+           <td>
+             {{user.smoke ? "흡연" : "비흡연"}}
+           </td>
+           <td>
+             {{user.id}}
+           </td>
+
+           <td class="table-small-font">
+             {{user.joinDate | date : 'yyyy MM d, H:mm:ss'}}
+           </td>
+           <td class="table-small-font">
+             {{user.lastLogin | date : 'yyyy MM d, H:mm:ss'}}
+           </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+ </div>
+</div>
