@@ -1,6 +1,6 @@
 <div class="showVideo" ng-init="init()">
     <div class="topBanner">
-        <!--갤러리-->
+        <img src="images/youtube_dummy.png" alt="youtube" style="width:375px; margin-top: 50px;"/>
     </div>
 
     <div class="bestCategory">
@@ -8,20 +8,24 @@
 
 
             <div class="item">
-                <div class="cateImg fa fa-bars" ng-click="selection('all')" ></div>
-                <a class="caption">전체</a>
+                <!--<div class="cateImg fa fa-bars"  ></div>-->
+                <i class="fa fa-bars" ng-click="selection('all')"></i>
+                <a class="caption">추천</a>
             </div>
             <div class="item">
-                <img class="cateImg" ng-click="selection('dance')" ng-src="{{'/images/main_dance_2x.png'}}"/>
+                <!--<img class="cateImg" ng-click="selection('dance')" ng-src="{{'/images/main_dance_2x.png'}}"/>-->
+                <i class="fa fa-music"ng-click="selection('act')"></i>
                 <a class="caption">춤</a>
             </div>
             <div class="item">
-                <img class="cateImg" ng-click="selection('sing')" ng-src="{{'/images//main_mike_2x.png'}}"/>
+                <!--<img class="cateImg" ng-click="selection('sing')" ng-src="{{'/images//main_mike_2x.png'}}"/>-->
+                <i class="fa fa-microphone"ng-click="selection('sing')"></i>
                 <a class="caption">노래</a>
             </div>
             <div class="item">
-                <img class="cateImg" ng-click="selection('act')" ng-src="{{'/images/main_act_2x.png'}}" width="80%" height="80%"/>
-                <a class="caption">연기,개그</a>
+                <!--<img class="cateImg" ng-click="selection('act')" ng-src="{{'/images/main_act_2x.png'}}"/>-->
+                <i class="fa fa-camera"ng-click="selection('act')"></i>
+                <a class="caption">연기/개그</a>
             </div>
 
         </div>
@@ -29,7 +33,7 @@
     </div>
 
     <div class="weeklyRank">
-        <p class="title">이번주 랭킹</p>
+        <p class="title">실시간 랭킹</p>
         <!-- vi-->
         <!--<div class="photo-overlay" ng-show="svc.open"></div>-->
         <!--<div class="photo-modal" ng-show="svc.open">-->
@@ -43,8 +47,9 @@
         <!--</div>-->
         <div class="rank4">
             <div class="cardBox" ng-repeat="rank in ranks">
-                <div class="card">
+                <div class="card" ng-click="toDetail(rank.idx)">
                     <img class="cardImg" ng-src="{{rank.thumbnail}}">
+                    <!--<img src="images/medal_1st_2x.png" alt="medal_1st"/>-->
 
                     <div class="cardCaption">
                         <div class="cardBody">
@@ -69,6 +74,5 @@
                 </div>
             </div>
         </div>
-
-    </div>
+        </div>
 </div>

@@ -15,12 +15,17 @@ const sequelize = require('../etc/db').sequelize;
 router.post('/join', function (req, res, next) {
     var data = {};
 
+    console.log(req.body);
+
     data.email = req.body.email;
     data.pw = req.body.pw;
     data.userid = req.body.userid;
     data.nickname = req.body.nickname;
     data.height = req.body.height;
     data.weight = req.body.weight;
+    data.age = req.body.age;
+
+    console.log(data);
 
     sequelize.transaction(function (t) {
         return dMeet.insertMember(data, t)
@@ -70,5 +75,11 @@ router.post('/login', function (req, res, next) {
             next();
         })
 });
+
+router.post('/logout', function (req, res, next) {
+    delete req.session.user;
+
+    res.json(warp({}));
+})
 
 module.exports = router;

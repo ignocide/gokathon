@@ -34,13 +34,17 @@ exports.insertExtra = function(data,t){
     let id = data.id;
     let weight = data.weight;
     let height = data.height;
+    let age = data.age;
+
     return sequelize.query(
         sql.insertExtra,
         {
             bind : {
                 id : id,
                 weight : weight,
-                height : height
+                height : height,
+                age : age
+
             },
             type : sequelize.QueryTypes.INSERT,
             transaction : t

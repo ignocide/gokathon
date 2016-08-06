@@ -1,0 +1,51 @@
+<div ng-init="init()">
+
+    <div class="list">
+        <p class="title">리스트</p>
+        <!-- vi-->
+        <!--<div class="photo-overlay" ng-show="svc.open"></div>-->
+        <!--<div class="photo-modal" ng-show="svc.open">-->
+        <!--<img ng-src="{{svc.photo}}" class="photo-body" ng-click="closePhoto()"/>-->
+
+        <!--<div class="photo-thumbnails">-->
+        <!--<div class="photo-thumbnail" ng-repeat="thumbnail in svc.thumbnails">-->
+        <!--<img ng-src="{{thumbnail}}" class="photo-body" ng-click="setPhoto(thumbnail)"/>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <div class="rank4">
+            <div class="cardBox" ng-repeat="rank in list">
+                <div class="card" ng-click="toDetail(rank.idx)">
+                    <img class="cardImg" ng-src="{{rank.thumbnail}}">
+                    <!--<img src="images/medal_1st_2x.png" alt="medal_1st"/>-->
+
+                    <div class="cardCaption">
+                        <div class="cardBody">
+                            <a class="title" ng-bind="rank.title">
+
+                            </a>
+                            <a class="userid" ng-bind="rank.nickname">
+
+                            </a>
+                        </div>
+                        <div class="cardFoot">
+                            <div class="star">
+                                <span class="ratedStar"  uib-rating ng-model="rank.avgScore" max="max" read-only="isReadonly"  aria-labelledby="default-rating"  style="color: #8A0808">
+
+                                </span>
+                            </div>
+                            <div class="hit">
+                                <i class="fa fa-eye" aria-hidden="true"><a ng-bind="rank.hit">  </a></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary sign_in_btn form-control" ng-click="getList()">더 가져오기</button>
+
+
+    </div>
+
+
+</div>

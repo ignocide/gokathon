@@ -22,7 +22,7 @@ exports.createContent = function (data, t) {
         {
             bind: {
                 id: id,
-                cateIdx : cateIdx,
+                cateIdx: cateIdx,
                 writerId: writerId,
                 title: title,
                 content: content,
@@ -30,6 +30,23 @@ exports.createContent = function (data, t) {
                 thumbnail: thumbnail
             },
             type: sequelize.QueryTypes.INSERT,
+            transaction: t
+        })
+};
+
+
+
+exports.getList = function (data, t) {
+    t = t || null;
+    let page = data.page;
+    let offset = (page-1) * 10;
+    return sequelize.query(
+        sql.getList,
+        {
+            bind: {
+                offset : offset
+            },
+            type: sequelize.QueryTypes.SELECT,
             transaction: t
         })
 };
@@ -48,7 +65,7 @@ exports.readContent = function (data, t) {
             type: sequelize.QueryTypes.UPDATE,
             transaction: t
         })
-        .then(function(){
+        .then(function () {
             return sequelize.query(
                 sql.readContent,
                 {
@@ -62,19 +79,56 @@ exports.readContent = function (data, t) {
 };
 
 
+exports.getComments = function (data, t) {
+    t = t || null;
+    let idx = data.idx;
+
+    return sequelize.query(
+        sql.readComments,
+        {
+            bind: {
+                idx: idx
+            },
+            type: sequelize.QueryTypes.SELECT,
+            transaction: t
+        });
+};
+
+
 exports.scoreContent = function (data, t) {
     t = t || null;
     let idx = data.idx;
     let id = data.id;
     let score = data.score;
-    let comment = data.comment;
+
     return sequelize.query(
-        sql.readContent,
+        sql.scoreContent,
         {
             bind: {
                 idx: idx,
                 id: id,
                 score: score
+            },
+            type: sequelize.QueryTypes.INSERT,
+            transaction: t
+        });
+};
+
+
+exports.commentWrite = function (data, t) {
+    t = t || null;
+
+    let idx = data.idx;
+    let id = data.id;
+    let content = data.content;
+
+    return sequelize.query(
+        sql.writeComment,
+        {
+            bind: {
+                idx: idx,
+                id: id,
+                content: content
             },
             type: sequelize.QueryTypes.INSERT,
             transaction: t

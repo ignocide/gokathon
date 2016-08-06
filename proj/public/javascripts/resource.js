@@ -70,8 +70,23 @@ RestfulSvc.factory('restSvc', function (RESTapi) {
                     pw : pw
                 }
             )
-
             // return new RESTapi({svc : "users", func : "signupFormInfo"})
+        },
+        signup : function(userid,pw,email,nickname,height,weight,age){
+            return RESTapi.member(
+                {
+                    func : "join"
+                },
+                {
+                    userid: userid,
+                    pw : pw,
+                    email: email,
+                    nickname: nickname,
+                    height: height,
+                    weight: weight,
+                    age : age
+                }
+            )
         },
         getRanks : function(){
             return RESTapi.rank(
@@ -82,209 +97,71 @@ RestfulSvc.factory('restSvc', function (RESTapi) {
                 }
             )
         },
-        getDoneReportList : function(page){
-            return RESTapi.admin(
+        getContent : function(idx){
+            return RESTapi.content(
                 {
-                    func : "getDoneReportList"
+                    func : "read"
                 },
                 {
-                    page : page
+                    idx: idx
                 }
             )
         },
-        getReportList : function(page){
-            return RESTapi.admin(
+        doScore : function(score,idx){
+            return RESTapi.content(
                 {
-                    func : "getReportList"
+                    func : "score"
+                },
+                {
+                    score : score,
+                    idx: idx
+                }
+            )
+        },
+        writeComment : function(content,idx){
+            return RESTapi.content(
+                {
+                    func : "writeComment"
+                },
+                {
+                    idx : idx,
+                    content : content
+                }
+            )
+        },
+        logout : function(content,idx){
+            return RESTapi.member(
+                {
+                    func : "logout"
+                },
+                {
+                }
+            )
+        },
+        writeContent : function(writeInfo){
+            console.log(writeInfo)
+            return RESTapi.content(
+                {
+                    func : ""
+                },
+                {
+                    title : writeInfo.title,
+                    content : writeInfo.content,
+                    link : writeInfo.link,
+                    cateIdx : writeInfo.cateIdx
+                }
+            )
+        },
+        getList : function(page){
+            return RESTapi.content(
+                {
+                    func : "list"
                 },
                 {
                     page : page
                 }
             )
         }
-        ,dashboard : function(callback){
-            RESTapi.admin(
-                {
-                    func : "dashboard"
-                },
-                {
-                }
-                ,function(res){
-                    callback(res);
-                }
-                ,function(err){
-                    alert('server check');
-                })
-        }
-        ,getScreenPhoto : function(callback){
-            return RESTapi.admin(
-                {
-                    func : "getScreenPhoto"
-                },
-                {
-                }
-            )
-        }
-        ,readMessages : function(channel_url,message_id,callback){
-            return RESTapi.admin(
-                {
-                    func : "readMessages"
-                },
-                {
-                    channel_url : channel_url,
-                    message_id : message_id
-                }
-            )
-        }
-        ,getUserInfo : function(targetId){
-            return RESTapi.admin(
-                {
-                    func : "getUserInfo"
-                },
-                {
-                    targetId : targetId
-                }
-            )
-        }
-        ,doReport : function(reportInfo){
-            return RESTapi.admin(
-                {
-                    func : "doReport"
-                },
-                {
-                    idx : reportInfo.idx,
-                    reportId : reportInfo.id,
-                    message : reportInfo.message
-                }
-            )
-        }
-        ,setDoneReport : function(reportInfo){
-            return RESTapi.admin(
-                {
-                    func : "setDoneReport"
-                },
-                {
-                    idx : reportInfo.idx
-                }
-            )
-        }
-        ,setReqReport : function(reportInfo){
-            return RESTapi.admin(
-                {
-                    func : "setReqReport"
-                },
-                {
-                    idx : reportInfo.idx
-                }
-            )
-        }
-
-        ,approvePhoto : function(screenPhoto){
-            return RESTapi.admin(
-                {
-                    func : "approvePhoto"
-                },
-                {
-                    idx : screenPhoto.idx,
-                    id : screenPhoto.id
-                }
-            )
-        }
-        ,denyPhoto : function(screenPhoto){
-            return RESTapi.admin(
-                {
-                    func : "denyPhoto"
-                },
-                {
-                    idx : screenPhoto.idx,
-                    id : screenPhoto.id
-                }
-            )
-        }
-        ,changeNick : function(id,nick){
-            return RESTapi.admin(
-                {
-                    func : "changeNick"
-                },
-                {
-                    id : id,
-                    nickName : nick
-                }
-            )
-        }
-        ,getReqUniversityList : function(){
-            return RESTapi.admin(
-                {
-                    func : "getReqUniversityList"
-                },
-                {
-                }
-            )
-        }
-        ,approveUniversity : function(code){
-            return RESTapi.admin(
-                {
-                    func : "approveUniversity"
-                },
-                {
-                    code : code
-                }
-            )
-        }
-        ,denyUniversity : function(code){
-            return RESTapi.admin(
-                {
-                    func : "denyUniversity"
-                },
-                {
-                    code : code
-                }
-            )
-        }
-        ,getUnivUser : function(code){
-            return RESTapi.admin(
-                {
-                    func : "getUnivUser"
-                },
-                {
-                    code : code
-                }
-            )
-        }
-        ,modifyUserUniversity : function(id,universityCode){
-            return RESTapi.admin(
-                {
-                    func : "modifyUserUniversity"
-                },
-                {
-                    id : id,
-                    universityCode : universityCode
-                }
-            )
-        }
-        ,searchUser : function(users,page){
-            return RESTapi.admin(
-                {
-                    func : "searchUser"
-                },
-                {
-                    id : users.id,
-                    nickName : users.nickName,
-                    universityCode : users.universityCode,
-                    majorCode : users.majorCode,
-                    locationCode : users.locationCode,
-                    heightLevel : users.heightLevel,
-                    drinkLevel : users.drinkLevel,
-                    enterYear : users.enterYear,
-                    gender : users.gender,
-                    birth : users.birth,
-                    joinDate : users.joinDate,
-                    confirm : users.confirm,
-                    page : page || 0
-                }
-            )
-        }
-
     }
     return Svc;
 });

@@ -1,14 +1,28 @@
-$font-stack:    Helvetica, sans-serif;
+$font-stack: Helvetica, sans-serif;
 $primary-color: #B50B0B;
 
+html{
+  width: 100%;
+  overflow-x: hidden;
+}
+body{
+  overflow: auto;
+  overflow-x: inherit
+}
 .navbar {
-  height : 50px;
+  height: 50px;
   border: #eeeeee solid 1px;
+  padding: 10px;
+  background-color: $primary-color;
 
-  background-color:  $primary-color;
+  .navbar-header{
+    text-align: center;
+    font-size : 20px;
+    color : white;
+  }
 }
 
-body{
+body {
   height: 100%;
   margin: 0px;
 }
@@ -25,20 +39,20 @@ body{
   .wrapper {
     height: 100%;
     text-align: center;
-    .item{
-      width:20%;
-      height:100%;
+    .item {
+      width: 20%;
+      height: 100%;
       display: inline-block;
-//      border :  #eeeeee solid 1px;
+      //      border :  #eeeeee solid 1px;
 
-      .cateImg{
-        min-width : 60px;
+      .cateImg {
+        min-width: 60px;
         min-height: 60px;
-        border-radius : 50%;
+        border-radius: 50%;
         width: 100%;
       }
 
-      a{
+      a {
         text-align: center;
         width: 100%;
         margin: 0px;
@@ -49,84 +63,202 @@ body{
   }
 }
 
-
-.weeklyRank{
-  margin : 5px;
+.weeklyRank {
+  margin: 5px;
   .title {
     padding: 10px;
     width: 100%;
   }
 
-
-  .rank4{
+  .rank4 {
 
     text-align: center;
 
-    .cardBox{
+    .cardBox {
       width: 45%;
       display: inline-block;
       padding: 5px;
 
-
-      .card{
+      .card {
 
         border: #eeeeee solid 1px;
         height: 100%;
 
-        .cardImg{
+        .cardImg {
           width: 100%;
           height: 100%;
         }
 
-        .cardCaption{
+        .cardCaption {
           text-align: left;
           padding: 5px;
 
-          .cardBody{
+          .cardBody {
             height: auto;
-            .title{
-              font-size:15px;
-              padding-left : 3px;
+            .title {
+              font-size: 15px;
+              padding-left: 3px;
               display: block;
             }
 
-            .userid{
-              font-size:5px;
+            .userid {
+              font-size: 5px;
               padding-left: 3px;
-              color : #aaaaaa;
+              color: #aaaaaa;
               display: block;
             }
           }
 
-
-
-          .cardFoot{
+          .cardFoot {
             vertical-align: middle;
 
             height: auto;
-            .star{
-              font-size:5px;
-              padding-left : 3px;
+            .star {
+              font-size: 5px;
+              padding-left: 3px;
               display: inline-block;
             }
 
-            .hit{
+            .hit {
               float: right;
-              font-size:5px;
+              font-size: 5px;
               margin-right: 5px;
               display: inline-block;
             }
           }
 
-
-
         }
-
 
       }
 
     }
   }
 
+}
 
+.movieInfo {
+  padding: 5px;
+  border-bottom: #000000 solid 1px;
+  .title {
+    .titles {
+      font-size: 20px;
+      font-style: bold;
+    }
+    .btnOpen {
+      z-index: 100;
+      float: right;
+      height: 20px;
+      width: 20px;
+      color: #000;
+    }
+  }
+
+  .subInfo {
+    font-size: 6px;
+    margin-bottom: 5px;
+  }
+
+  .detailInfo {
+    margin-bottom: 5px;
+    .ratingStar {
+      font-size: 6px;
+      display: inline-block;
+    }
+    .btnComment {
+      z-index: 10;
+      font-size: 6px;
+    }
+
+  }
+
+  .movieContent {
+    border-top : #aaaaaa solid 1px;
+    margin: 5px;
+    font-size: 15px;
+  }
+}
+
+.scoreForm {
+  border-bottom: #000000 solid 1px;
+
+  padding: 10px;
+  background-color: #eeeeee;
+  text-align: center;
+  .scoreBoard {
+    font-size : 20px;
+    top: 0;
+    bottom: 0;
+
+    margin: 0 auto;
+
+    .mini {
+      font-size: 10px;
+    }
+  }
+
+
+}
+
+
+
+
+.comment{
+  padding: 10px;
+  border-bottom: 1px solid #eeeeee;
+  .header{
+    .nickname {
+      margin : 0px;
+    }
+
+    .time{
+      color : black;
+      font-size: 5px;
+    }
+  }
+  .body{
+    font-size: 15px;
+  }
+}
+
+.form-warpper{
+  padding: 10px;
+  padding-top: 30px;
+}
+
+.footer{
+  float:right;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.login{
+  padding : 10px;
+  padding-top: 100px;
+
+  .input-group{
+    margin-bottom: 20px;
+  }
+}
+
+.sidePanel{
+  width: 80%;
+  right: -100%;
+  top : 0%;
+  height: 100%;
+  position: absolute;
+  background-color: #eeeeee;
+}
+
+
+
+.footer_side{
+  float:right;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #f5f5f5;
 }

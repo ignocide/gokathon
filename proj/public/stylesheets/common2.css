@@ -1,0 +1,57 @@
+.writeForm {
+  padding: 20px;
+  padding-top: 40px; }
+  .writeForm .movie {
+    margin-bottom: 10px; }
+
+.sidePanel .locations {
+  display: table-row;
+  width: 100%;
+  height: 50px; }
+
+.list {
+  padding-top: 50px; }
+  .list .title {
+    margin: 10px;
+    font-size: 20px; }
+
+.rank4 {
+  text-align: center; }
+  .rank4 .cardBox {
+    width: 45%;
+    display: inline-block;
+    padding: 5px; }
+    .rank4 .cardBox .card {
+      border: #eeeeee solid 1px;
+      height: 100%; }
+      .rank4 .cardBox .card .cardImg {
+        width: 100%;
+        height: 100%; }
+      .rank4 .cardBox .card .cardCaption {
+        text-align: left;
+        padding: 5px; }
+        .rank4 .cardBox .card .cardCaption .cardBody {
+          height: auto; }
+          .rank4 .cardBox .card .cardCaption .cardBody .title {
+            font-size: 15px;
+            padding-left: 3px;
+            display: block; }
+          .rank4 .cardBox .card .cardCaption .cardBody .userid {
+            font-size: 5px;
+            padding-left: 3px;
+            color: #aaaaaa;
+            display: block; }
+        .rank4 .cardBox .card .cardCaption .cardFoot {
+          vertical-align: middle;
+          height: auto; }
+          .rank4 .cardBox .card .cardCaption .cardFoot .star {
+            font-size: 5px;
+            padding-left: 3px;
+            display: inline-block; }
+          .rank4 .cardBox .card .cardCaption .cardFoot .hit {
+            float: right;
+            font-size: 5px;
+            margin-right: 5px;
+            display: inline-block; }
+
+/*# sourceMappingURL=common2.css.map */

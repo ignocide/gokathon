@@ -1,0 +1,88 @@
+.writeForm{
+  padding: 20px;
+  padding-top: 40px;
+
+  .movie {
+    margin-bottom: 10px;
+  }
+}
+
+
+.sidePanel {
+  .locations{
+    display: table-row;
+    width: 100%;
+    height: 50px;
+  }
+}
+.list{
+  padding-top: 50px;
+  .title{
+    margin: 10px;
+    font-size: 20px;
+  }
+}
+
+.rank4 {
+
+  text-align: center;
+
+  .cardBox {
+    width: 45%;
+    display: inline-block;
+    padding: 5px;
+
+    .card {
+
+      border: #eeeeee solid 1px;
+      height: 100%;
+
+      .cardImg {
+        width: 100%;
+        height: 100%;
+      }
+
+      .cardCaption {
+        text-align: left;
+        padding: 5px;
+
+        .cardBody {
+          height: auto;
+          .title {
+            font-size: 15px;
+            padding-left: 3px;
+            display: block;
+          }
+
+          .userid {
+            font-size: 5px;
+            padding-left: 3px;
+            color: #aaaaaa;
+            display: block;
+          }
+        }
+
+        .cardFoot {
+          vertical-align: middle;
+
+          height: auto;
+          .star {
+            font-size: 5px;
+            padding-left: 3px;
+            display: inline-block;
+          }
+
+          .hit {
+            float: right;
+            font-size: 5px;
+            margin-right: 5px;
+            display: inline-block;
+          }
+        }
+
+      }
+
+    }
+
+  }
+}

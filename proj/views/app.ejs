@@ -19,11 +19,14 @@
     <script src="/bower_components/angular-route/angular-route.min.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 
     <script src="/javascripts/app.js"></script>
     <script src="/javascripts/resource.js"></script>
     <link href="/stylesheets/common.css" rel="stylesheet">
-
+    <link href="/stylesheets/common2.css" rel="stylesheet">
+    <link rel="stylesheet" href="/font/css/font-awesome.min.css">
     <!--<script src="/bower_components/angular-morris-chart/src/angular-morris-chart.js"></script>-->
     <!-- Angular Material Library -->
     <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
@@ -64,7 +67,7 @@
 <div id="wrapper">
 
     <!-- Navigation -->
-    <nav class="navbar" role="navigation" style="margin-bottom: 0" ng-controller="navCtrl">
+    <nav class="navbar navbar-fix" role="navigation" style="margin-bottom: 0" ng-controller="navCtrl">
         <div class="navbar-header">
 
             <!--&lt;!&ndash;검색창 구현&ndash;&gt;-->
@@ -75,6 +78,10 @@
             <!--<span class="icon-bar"></span>-->
             <!--</button>-->
             <!--<a class="navbar-brand" href="index.html">poking admin</a>-->
+            <span class="navbar-logo"><img src="images/logo_top_bar.png" alt="logo" ng-click="toMain()"/></span>
+            <span class="glyphicon glyphicon-search" aria-hidden="true" style="position:absolute; right:43px; top:12px;"></span>
+            <span class="glyphicon glyphicon-align-justify" aria-hidden="true" style="float:right" ng-click="open()"></span>
+
         </div>
         <!-- /.navbar-static-side -->
     </nav>
@@ -84,6 +91,38 @@
 
     <!-- /#page-wrapper -->
 
+    <div class="sidePanel" ng-controller="navCtrl">
+        <nav class="navbar" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+
+                <!--&lt;!&ndash;검색창 구현&ndash;&gt;-->
+                <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">-->
+                <!--<span class="sr-only">Toggle navigation</span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--</button>-->
+                <!--<a class="navbar-brand" href="index.html">poking admin</a>-->
+                <span class="sideOpenBtn glyphicon glyphicon-align-justify" aria-hidden="true" style="float:right" ng-click="close()"></span>
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div class="locations">
+            <a ng-click="path('/list')">리스트</a>
+        </div>
+        <div class="locations">
+            <a ng-click="path('/write')">글쓰기</a>
+        </div>
+        <div class="locations">
+            <a ng-click="path('/rank')">랭킹</a>
+        </div>
+        <footer class="footer_side btnFooter">
+            <div class="footer_bottom" ng-click="logout()" style="width: 100%; height: 100%;">
+                <span>로그아웃</span>
+            </div>
+        </footer>
+    </div>
 </div>
 
 
