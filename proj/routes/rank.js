@@ -10,25 +10,32 @@ var warp = require('../etc/etc').wrapSuccess;
 var dContent = require('../etc/dContent');
 
 const sequelize = require('../etc/db').sequelize;
+const Promise = require('bluebird');
 
 
-router.get('feed', function (req, res, next) {
-
+router.post('/feed', function (req, res, next) {
+    console.log("!!!");
     var data = {};
 
-    dContent.createContent(data)
-        .then(function (result) {
+    var task = {};
+    task.dance = dContent.rankDance(data);
+    task.sing = dContent.rankSing(data);
+    task.act = dContent.rankAct(data);
+    task.all = dContent.rankAll(data);
+
+    return Promise.props(task)
+    .then(function(result){
             console.log(result);
-            res.json(warp({}))
-        })
-        .catch(function (err) {
+        res.json(warp(result));
+    })
+    .catch(function(err){
             console.log(err);
-            next(err);
-        })
+        next(err);
+    });
 });
 
 
-router.get('/:idx', function (req, res, next) {
+router.post('/read', function (req, res, next) {
     var data = {};
 
     data.idx = req.params.idx;

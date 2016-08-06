@@ -3,7 +3,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: '타이틀' });
+    res.render('app');
+});
+
+router.get('/template/rank', function(req, res, next) {
+    res.render('template/rank');
 });
 
 module.exports = router;

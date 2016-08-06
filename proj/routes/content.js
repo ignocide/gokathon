@@ -17,6 +17,7 @@ router.post('', function (req, res, next) {
     var data = {};
 
     data.id = req.body.id;
+    data.cateIdx = req.body.cateIdx;
     data.writerId = req.session.user.id;
     data.title = req.body.title;
     data.content = req.body.content;
@@ -40,10 +41,10 @@ router.post('', function (req, res, next) {
 });
 
 
-router.post('/:idx', function (req, res, next) {
+router.post('/read', function (req, res, next) {
     var data = {};
 
-    data.idx = req.params.idx;
+    data.idx = req.body.idx;
 
     dContent.readContent(data)
         .then(function (result) {
@@ -76,5 +77,7 @@ router.post('/score', function (req, res, next) {
             next();
         })
 });
+
+
 
 module.exports = router;

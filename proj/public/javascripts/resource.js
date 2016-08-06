@@ -3,10 +3,11 @@
  */
 'use strict';
 // 모듈 명칭 정의
-var RestfulSvc = angular.module('poking.RestfulSvc', []);
+var RestfulSvc = angular.module('RestfulSvc', []);
 
 RestfulSvc.factory('RESTapi', ['$resource', function ($resource) {
-    var prefixUrl = "http://172.24.2.183/";
+//    var prefixUrl = "http://172.24.2.183:8080/";
+    var prefixUrl = "";
     /**
      * @domain : biz object ex) person
      * @key : biz object id ex) persion id is 123
@@ -59,19 +60,25 @@ RestfulSvc.factory('RESTapi', ['$resource', function ($resource) {
 RestfulSvc.factory('restSvc', function (RESTapi) {
 
     var Svc = {
-        signupFormInfo : function(page){
-            return RESTapi.users(
+        login : function(userid,pw){
+            return RESTapi.member(
                 {
-                    func : "signupFormInfo"
+                    func : "login"
+                },
+                {
+                    userid : userid,
+                    pw : pw
                 }
             )
 
             // return new RESTapi({svc : "users", func : "signupFormInfo"})
         },
-        searchUniversity : function(page){
-            return RESTapi.users(
+        getRanks : function(){
+            return RESTapi.rank(
                 {
-                    func : "searchUniversity"
+                    func : "feed"
+                },{
+
                 }
             )
         },

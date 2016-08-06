@@ -104,7 +104,7 @@ var start = function (callback) {
     });
 
 
-    var server = app.listen(80, function (req, res) {
+    var server = app.listen(3000, function (req, res) {
         console.log('서버가 ' + server.address().port + ' port에서 실행중...');
         if (callback) {
             callback();

@@ -1,0 +1,80 @@
+.navbar {
+  height: 50px;
+  border: #eeeeee solid 1px;
+  background-color: #B50B0B; }
+
+body {
+  height: 100%;
+  margin: 0px; }
+
+.topBanner {
+  height: 100px;
+  border: #eeeeee solid 1px; }
+
+.bestCategory {
+  min-height: 70px;
+  padding: 5px;
+  border-bottom: #eee solid 1px; }
+  .bestCategory .wrapper {
+    height: 100%;
+    text-align: center; }
+    .bestCategory .wrapper .item {
+      width: 20%;
+      height: 100%;
+      display: inline-block; }
+      .bestCategory .wrapper .item .cateImg {
+        min-width: 60px;
+        min-height: 60px;
+        border-radius: 50%;
+        width: 100%; }
+      .bestCategory .wrapper .item a {
+        text-align: center;
+        width: 100%;
+        margin: 0px;
+        font-size: 8px; }
+
+.weeklyRank {
+  margin: 5px; }
+  .weeklyRank .title {
+    padding: 10px;
+    width: 100%; }
+  .weeklyRank .rank4 {
+    text-align: center; }
+    .weeklyRank .rank4 .cardBox {
+      width: 45%;
+      display: inline-block;
+      padding: 5px; }
+      .weeklyRank .rank4 .cardBox .card {
+        border: #eeeeee solid 1px;
+        height: 100%; }
+        .weeklyRank .rank4 .cardBox .card .cardImg {
+          width: 100%;
+          height: 100%; }
+        .weeklyRank .rank4 .cardBox .card .cardCaption {
+          text-align: left;
+          padding: 5px; }
+          .weeklyRank .rank4 .cardBox .card .cardCaption .cardBody {
+            height: auto; }
+            .weeklyRank .rank4 .cardBox .card .cardCaption .cardBody .title {
+              font-size: 15px;
+              padding-left: 3px;
+              display: block; }
+            .weeklyRank .rank4 .cardBox .card .cardCaption .cardBody .userid {
+              font-size: 5px;
+              padding-left: 3px;
+              color: #aaaaaa;
+              display: block; }
+          .weeklyRank .rank4 .cardBox .card .cardCaption .cardFoot {
+            vertical-align: middle;
+            height: auto; }
+            .weeklyRank .rank4 .cardBox .card .cardCaption .cardFoot .star {
+              font-size: 5px;
+              padding-left: 3px;
+              display: inline-block; }
+            .weeklyRank .rank4 .cardBox .card .cardCaption .cardFoot .hit {
+              float: right;
+              font-size: 5px;
+              margin-right: 5px;
+              display: inline-block; }
+
+/*# sourceMappingURL=common.css.map */

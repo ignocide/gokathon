@@ -15,12 +15,14 @@ exports.createContent = function (data, t) {
     let content = data.content;
     let link = data.link;
     let thumbnail = data.thumbnail;
-    console.log(data);
+    let cateIdx = data.cateIdx;
+
     return sequelize.query(
         sql.createContent,
         {
             bind: {
                 id: id,
+                cateIdx : cateIdx,
                 writerId: writerId,
                 title: title,
                 content: content,
@@ -84,14 +86,52 @@ exports.rankDance = function (data, t) {
     t = t || null;
 
     return sequelize.query(
-        sql.readContent,
+        sql.rankDance,
         {
             bind: {
-                idx: idx,
-                id: id,
-                score: score
+
             },
-            type: sequelize.QueryTypes.INSERT,
+            type: sequelize.QueryTypes.SELECT,
+            transaction: t
+        });
+};
+
+
+exports.rankSing = function (data, t) {
+    t = t || null;
+
+    return sequelize.query(
+        sql.rankSing,
+        {
+            bind: {
+            },
+            type: sequelize.QueryTypes.SELECT,
+            transaction: t
+        });
+};
+
+exports.rankAct = function (data, t) {
+    t = t || null;
+
+    return sequelize.query(
+        sql.rankAct,
+        {
+            bind: {
+            },
+            type: sequelize.QueryTypes.SELECT,
+            transaction: t
+        });
+};
+
+exports.rankAll = function (data, t) {
+    t = t || null;
+
+    return sequelize.query(
+        sql.rankAll,
+        {
+            bind: {
+            },
+            type: sequelize.QueryTypes.SELECT,
             transaction: t
         });
 };
