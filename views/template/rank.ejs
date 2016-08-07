@@ -1,0 +1,78 @@
+<div class="showVideo" ng-init="init()">
+    <div class="topBanner">
+        <img src="images/youtube_dummy.png" alt="youtube" style="width:100%; margin-top: 50px;"/>
+    </div>
+
+    <div class="bestCategory">
+        <div class="wrapper">
+
+
+            <div class="item">
+                <!--<div class="cateImg fa fa-bars"  ></div>-->
+                <i class="fa fa-bars" ng-click="selection('all')"></i>
+                <a class="caption">추천</a>
+            </div>
+            <div class="item">
+                <!--<img class="cateImg" ng-click="selection('dance')" ng-src="{{'/images/main_dance_2x.png'}}"/>-->
+                <i class="fa fa-music"ng-click="selection('act')"></i>
+                <a class="caption">춤</a>
+            </div>
+            <div class="item">
+                <!--<img class="cateImg" ng-click="selection('sing')" ng-src="{{'/images//main_mike_2x.png'}}"/>-->
+                <i class="fa fa-microphone"ng-click="selection('sing')"></i>
+                <a class="caption">노래</a>
+            </div>
+            <div class="item">
+                <!--<img class="cateImg" ng-click="selection('act')" ng-src="{{'/images/main_act_2x.png'}}"/>-->
+                <i class="fa fa-camera"ng-click="selection('act')"></i>
+                <a class="caption">연기/개그</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="weeklyRank">
+        <p class="title">실시간 랭킹</p>
+        <!-- vi-->
+        <!--<div class="photo-overlay" ng-show="svc.open"></div>-->
+        <!--<div class="photo-modal" ng-show="svc.open">-->
+            <!--<img ng-src="{{svc.photo}}" class="photo-body" ng-click="closePhoto()"/>-->
+
+            <!--<div class="photo-thumbnails">-->
+                <!--<div class="photo-thumbnail" ng-repeat="thumbnail in svc.thumbnails">-->
+                    <!--<img ng-src="{{thumbnail}}" class="photo-body" ng-click="setPhoto(thumbnail)"/>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="rank4">
+            <div class="cardBox" ng-repeat="rank in ranks">
+                <div class="card" ng-click="toDetail(rank.idx)">
+                    <img class="cardImg" ng-src="{{rank.thumbnail}}">
+                    <!--<img src="images/medal_1st_2x.png" alt="medal_1st"/>-->
+
+                    <div class="cardCaption">
+                        <div class="cardBody">
+                            <a class="title" ng-bind="rank.title">
+
+                            </a>
+                            <a class="userid" ng-bind="rank.nickname">
+
+                            </a>
+                        </div>
+                        <div class="cardFoot">
+                            <div class="star">
+                                <span class="ratedStar"  uib-rating ng-model="rank.avgScore" max="max" read-only="isReadonly"  aria-labelledby="default-rating"  style="color: #8A0808">
+
+                                </span>
+                            </div>
+                            <div class="hit">
+                                <i class="fa fa-eye" aria-hidden="true"><a ng-bind="rank.hit">  </a></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+</div>
